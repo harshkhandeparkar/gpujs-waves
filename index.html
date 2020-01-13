@@ -8,12 +8,36 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  
   <canvas id="main-canvas"></canvas>
   <h1 id="frames"></h1>
 
+  <br><br>
   <form>
-    <label for="speed">Speed: </label><input type="text" id="speed" placeholder="Speed" /><br><br>
+    <table>
+      <tr>
+        <th>Wave</th>
+        <th>Amplitude</th>
+        <th>Angular Frequency</th>
+        <th>Angular Wave Number</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><input type="text" id="amp-1" placeholder="Amplitude" /></td>
+        <td><input type="text" id="freq-1" placeholder="Angular Frequency" /></td>
+        <td><input type="text" id="wave-no-1" placeholder="Angular Wave Number" /></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><input type="text" id="amp-2" placeholder="Amplitude" /></td>
+        <td><input type="text" id="freq-2" placeholder="Angular Frequency" /></td>
+        <td><input type="text" id="wave-no-2" placeholder="Angular Wave Number" /></td>
+      </tr>
+    </table>
+  </form>
+  <br><br>
+
+  <form>
+    <label for="speed">Time Step Per Render: </label><input type="text" id="speed" placeholder="Speed" /><br><br>
     <label for="rend-per-frame">Renders Per Frame: </label><input type="number" id="rend-per-frame" placeholder="Renders Per Frame" /><br><br>
     <label for="pt-size">Point Size: </label><input type="text" id="pt-size" placeholder="Point Size" /><br><br>
     <label for="coord-scale-factor">Coordinate Scale Factor: </label><input type="text" id="coord-scale-factor" placeholder="Coordinate Scale Factor" /><br><br>
@@ -22,7 +46,7 @@
     <button id="restart">Restart</button>
     <button id="blank">Blank Graph</button>
   </form>
-  
+
   <script src="./gpu-browser.min.js"></script>
   <script src="./waves.js"></script>
   <script src="./inputs.js"></script>

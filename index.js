@@ -43,10 +43,32 @@ document.getElementById('restart').onclick = e => {
 document.getElementById('change').onclick = e => {
   e.preventDefault();
 
-  speed = document.getElementById('speed').value;
-  rendersPerFrame = document.getElementById('rend-per-frame').value;
-  pointSize = document.getElementById('pt-size').value;
-  coordScaleFactor = document.getElementById('coord-scale-factor').value;
+  speed = Number(document.getElementById('speed').value);
+  rendersPerFrame = Number(document.getElementById('rend-per-frame').value);
+  pointSize = Number(document.getElementById('pt-size').value);
+  coordScaleFactor = Number(document.getElementById('coord-scale-factor').value);
+
+  HTMLWave1Params = [
+    Number(document.getElementById('amp-1').value),
+    document.getElementById('freq-1').value,
+    document.getElementById('wave-no-1').value
+  ]
+  HTMLWave2Params = [
+    Number(document.getElementById('amp-2').value),
+    document.getElementById('freq-2').value,
+    document.getElementById('wave-no-2').value
+  ]
+
+  wave1Params = [
+    HTMLWave1Params[0],
+    Number(eval(HTMLWave1Params[1].replace('pi', pi))),
+    Number(eval(HTMLWave1Params[2].replace('pi', pi)))
+  ]
+  wave2Params = [
+    HTMLWave2Params[0],
+    Number(eval(HTMLWave2Params[1].replace('pi', pi))),
+    Number(eval(HTMLWave2Params[2].replace('pi', pi)))
+  ]
 }
 
 document.getElementById('blank').onclick = e => {
@@ -59,6 +81,14 @@ document.getElementById('blank').onclick = e => {
   display(renderPixelsTex);
 }
 
+// Initialize Waves Data (in HTML)
+document.getElementById('amp-1').value = HTMLWave1Params[0];
+document.getElementById('freq-1').value = HTMLWave1Params[1];
+document.getElementById('wave-no-1').value = HTMLWave1Params[2];
+document.getElementById('amp-2').value = HTMLWave2Params[0];
+document.getElementById('freq-2').value = HTMLWave2Params[1];
+document.getElementById('wave-no-2').value = HTMLWave2Params[2];
+
 display(renderPixelsTex);
 window.requestAnimationFrame(doDraw);
 
@@ -66,11 +96,7 @@ setInterval(() => {
   document.getElementById('frames').innerHTML = `
   ${renders} renders per second <br>
   ${frames} fps <br>
-  time step per render: ${speed} <br>
-  rendersPerFrame: ${rendersPerFrame} <br>
   dimensions: ${dim} x ${dim} <br>
-  coordScaleFactor: ${coordScaleFactor} <br>
-  pointSize: ${pointSize} <br>
 `;
   frames = 0;
   renders = 0;

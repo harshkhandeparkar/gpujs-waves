@@ -21,5 +21,8 @@ document.getElementById('rend-per-frame').value = rendersPerFrame;
 document.getElementById('pt-size').value = pointSize;
 document.getElementById('coord-scale-factor').value = coordScaleFactor;
 
-const wave1Params = [0.5, pi, -pi];
-const wave2Params = [0.5, pi, pi];
+let wave1Params = [0.5, pi, -pi];
+let wave2Params = [0.5, pi, pi];
+
+let HTMLWave1Params = [0.5, 'pi', '-pi'];
+let HTMLWave2Params = [0.5, 'pi', 'pi'];

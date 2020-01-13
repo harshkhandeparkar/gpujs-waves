@@ -97,6 +97,7 @@ setInterval(() => {
   ${renders} renders per second <br>
   ${frames} fps <br>
   Dimensions: ${dim}px x ${dim}px <br>
+  Time: ${t} <br>
 `;
   frames = 0;
   renders = 0;

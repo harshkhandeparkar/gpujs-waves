@@ -26,7 +26,7 @@ let HTMLWave1Params = ['0.5', 'pi', 'pi']; // String values for pi which will fi
 let HTMLWave2Params = ['1', 'pi', 'pi/2'];
 
 let wave1Params = [
-  Number(eval(HTMLWave1Params[].replace('pi', pi))),
+  Number(eval(HTMLWave1Params[0].replace('pi', pi))),
   Number(eval(HTMLWave1Params[1].replace('pi', pi))), // Evaluate mathematical expressions
   Number(eval(HTMLWave1Params[2].replace('pi', pi)))
 ]

@@ -21,8 +21,17 @@ document.getElementById('rend-per-frame').value = rendersPerFrame;
 document.getElementById('pt-size').value = pointSize;
 document.getElementById('coord-scale-factor').value = coordScaleFactor;
 
-let wave1Params = [0.5, pi, -pi];
-let wave2Params = [0.5, pi, pi];
-
-let HTMLWave1Params = [0.5, 'pi', '-pi'];
+// [Amplitude, Ang Freq, Ang Wave No]
+let HTMLWave1Params = [0.5, 'pi', '-2*pi']; // String values for pi which will finally be evaluated
 let HTMLWave2Params = [0.5, 'pi', 'pi'];
+
+let wave1Params = [
+  HTMLWave1Params[0],
+  Number(eval(HTMLWave1Params[1].replace('pi', pi))), // Evaluate mathematical expressions
+  Number(eval(HTMLWave1Params[2].replace('pi', pi)))
+]
+let wave2Params = [
+  HTMLWave2Params[0],
+  Number(eval(HTMLWave2Params[1].replace('pi', pi))),
+  Number(eval(HTMLWave2Params[2].replace('pi', pi)))
+]

@@ -5,11 +5,20 @@ let frames = 0; // frame count
 let t = 0; // time
 let blank = blankGraph(); // initial black graph rendered pixels texture
 let renderPixelsTex = blankGraph();
+let lastBlank;
+
+const deleteTexture = (texture) => {
+  if (texture && texture.delete) {
+    texture.delete();
+  }
+}
 
 const doDraw = () => {
   if(doRender) {
     for (let i = 0; i < rendersPerFrame; i++) {
-      renderPixelsTex = render(wave1Params, wave2Params, t, getTex(blank), coordScaleFactor, pointSize);
+      deleteTexture(renderPixelsTex);
+      deleteTexture(lastBlank);
+      renderPixelsTex = render(wave1Params, wave2Params, t, lastBlank = getTex(blank), coordScaleFactor, pointSize);
       
       t += speed;
       renders++; // count the rendered frame

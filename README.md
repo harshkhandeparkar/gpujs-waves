@@ -1,2 +1,3 @@
-# gpujs-fourier-series
-Fourier Series Graphing on the GPU using [GPU.js](https://github.com/gpujs/gpu.js)
+# gpujs-waves
+Physical Waves Interference Animation With [GPU.js](https://github.com/gpujs/gpu.js)
+Demo: https://harshkhandeparkar/gpujs-waves

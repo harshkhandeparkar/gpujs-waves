@@ -9,12 +9,12 @@ let dim = 1000, // dimensions
   centerY = dim / 2,
   bg = 0, // backgroundColor: 0 to 1(greyscale)
   color = 1, // color of the point: 0 to 1(greyscale)
-  speed = 0.01, // Angle Step in radians
+  speed = 0.001, // Angle Step in radians
   doRender = false,
-  rendersPerFrame = 1,
+  rendersPerFrame = 10,
   pi = Math.PI,
-  pointSize = 0.1, // Size of the point/brush
-  coordScaleFactor = 30;// Coordinates are multiplied by this(makes the graphs bigger or smaller)
+  pointSize = 0.03, // Size of the point/brush
+  coordScaleFactor = 100;// Coordinates are multiplied by this(makes the graphs bigger or smaller)
 
 document.getElementById('speed').value = speed;
 document.getElementById('rend-per-frame').value = rendersPerFrame;

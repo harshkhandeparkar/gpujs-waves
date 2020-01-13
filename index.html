@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Complex Nos</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+  <canvas id="main-canvas"></canvas>
+  <h1 id="frames"></h1>
+
+  <form>
+    <label for="speed">Speed: </label><input type="text" id="speed" placeholder="Speed" /><br><br>
+    <label for="rend-per-frame">Renders Per Frame: </label><input type="number" id="rend-per-frame" placeholder="Renders Per Frame" /><br><br>
+    <label for="pt-size">Point Size: </label><input type="text" id="pt-size" placeholder="Point Size" /><br><br>
+    <label for="coord-scale-factor">Coordinate Scale Factor: </label><input type="text" id="coord-scale-factor" placeholder="Coordinate Scale Factor" /><br><br>
+    <button id="change">Change Input</button>
+    <button id="start-stop">Start</button>
+    <button id="restart">Restart</button>
+    <button id="blank">Blank Graph</button>
+  </form>
+  
+  <script src="./gpu-browser.min.js"></script>
+  <script src="./waves.js"></script>
+  <script src="./inputs.js"></script>
+  <script src="./kernels.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

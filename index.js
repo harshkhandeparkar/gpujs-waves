@@ -96,7 +96,7 @@ setInterval(() => {
   document.getElementById('frames').innerHTML = `
   ${renders} renders per second <br>
   ${frames} fps <br>
-  dimensions: ${dim} x ${dim} <br>
+  Dimensions: ${dim}px x ${dim}px <br>
 `;
   frames = 0;
   renders = 0;

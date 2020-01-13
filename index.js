@@ -59,12 +59,12 @@ document.getElementById('change').onclick = e => {
   coordScaleFactor = Number(document.getElementById('coord-scale-factor').value);
 
   HTMLWave1Params = [
-    Number(document.getElementById('amp-1').value),
+    document.getElementById('amp-1').value,
     document.getElementById('freq-1').value,
     document.getElementById('wave-no-1').value
   ]
   HTMLWave2Params = [
-    Number(document.getElementById('amp-2').value),
+    document.getElementById('amp-2').value,
     document.getElementById('freq-2').value,
     document.getElementById('wave-no-2').value
   ]

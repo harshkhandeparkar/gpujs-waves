@@ -77,8 +77,7 @@ document.getElementById('blank').onclick = e => {
   doRender = false;
   document.getElementById('start-stop').innerText = 'Start';
   document.getElementById('change').disabled = false;
-  renderPixelsTex = blankGraph();
-  display(renderPixelsTex);
+  display(blank);
 }
 
 // Initialize Waves Data (in HTML)
@@ -96,8 +95,8 @@ setInterval(() => {
   document.getElementById('frames').innerHTML = `
   ${renders} renders per second <br>
   ${frames} fps <br>
-  Dimensions: ${dim}px x ${dim}px <br>
-  Time: ${t} <br>
+  Dimensions: ${dim}px * ${dim}px <br>
+  Time: ${Math.floor(t*100) / 100} <br>
 `;
   frames = 0;
   renders = 0;

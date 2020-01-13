@@ -4,17 +4,17 @@ const gpu = new GPU({
   mode: 'gpu'
 })
 
-let dim = 1000, // dimensions
+let dim = 800, // dimensions
   centerX = dim / 2,
   centerY = dim / 2,
   bg = 0, // backgroundColor: 0 to 1(greyscale)
   color = 1, // color of the point: 0 to 1(greyscale)
-  speed = 0.001, // Time Step
+  speed = 0.01, // Time Step
   doRender = false,
-  rendersPerFrame = 10,
+  rendersPerFrame = 1,
   pi = Math.PI,
   pointSize = 0.03, // Size of the point/brush
-  coordScaleFactor = 100;// Coordinates are multiplied by this(makes the graphs bigger or smaller)
+  coordScaleFactor = 120;// Coordinates are multiplied by this(makes the graphs bigger or smaller)
 
 document.getElementById('speed').value = speed;
 document.getElementById('rend-per-frame').value = rendersPerFrame;

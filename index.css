@@ -11,7 +11,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
 }
 
 td, th {
@@ -19,7 +19,10 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+canvas {
+  margin-left: auto;
+}
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+button {
+  border-radius: 0;
 }

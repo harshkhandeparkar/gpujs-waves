@@ -35,6 +35,7 @@ document.getElementById('restart').onclick = e => {
 
   doRender = false;
   renderPixelsTex = blankGraph();
+  t = 0;
   doRender = true;
   document.getElementById('start-stop').innerText = 'Stop';
   document.getElementById('change').disabled = true;

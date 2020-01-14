@@ -7,28 +7,39 @@ const render = gpu.createKernel(
     const v1 = wave1Params[1] / wave1Params[2]; // Propagation velocity
     const v2 = wave2Params[1] / wave2Params[2];
     
-    let waveFront1 = v1 < 0 ?
+    const waveFront1 = v1 < 0 ?
       (this.constants.centerX - Math.abs(v1 * t * coordScaleFactor)) / coordScaleFactor : 
       (~this.constants.centerX + Math.abs(v1 * t * coordScaleFactor)) / coordScaleFactor
 
-    let waveFront2 = v2 < 0 ?
+    const waveFront2 = v2 < 0 ?
       (this.constants.centerX - Math.abs(v2 * t * coordScaleFactor)) / coordScaleFactor : 
       (~this.constants.centerX + Math.abs(v2 * t * coordScaleFactor)) / coordScaleFactor
 
-    const y1 = (v1 > 0 ? x < waveFront1 : x > waveFront1) ? wave1Params[0]*Math.sin(wave1Params[1]*t - wave1Params[2]*x) : 0;
-    const y2 = (v2 > 0 ? x < waveFront2 : x > waveFront2) ? wave2Params[0]*Math.sin(wave2Params[1]*t - wave2Params[2]*x) : 0;
+    const atWaveFront1 = (v1 > 0 ? x < waveFront1 : x > waveFront1);
+    const atWaveFront2 = (v2 > 0 ? x < waveFront2 : x > waveFront2);
+
+    const y1 = atWaveFront1 ? wave1Params[0]*Math.sin(wave1Params[1]*t - wave1Params[2]*x) : 0;
+    const y2 = atWaveFront2 ? wave2Params[0]*Math.sin(wave2Params[1]*t - wave2Params[2]*x) : 0;
     const finalY = y1 + y2;
-    const vp = (
-      Math.cos(wave1Params[1]*t - wave1Params[2]*x) +
-      Math.cos(wave2Params[1]*t - wave2Params[2]*x)
+    const vp = Math.abs(
+      (
+        atWaveFront1 ?
+        Math.cos(wave1Params[1]*t - wave1Params[2]*x) :
+        0
+      ) +
+      (
+        atWaveFront2 ?
+        Math.cos(wave2Params[1]*t - wave2Params[2]*x) :
+        0
+      )
     ) / 2 // particle velocity
   
     if (
       Math.abs(finalY - (this.thread.y - this.constants.centerY) / coordScaleFactor) < pointSize
       && 
       (
-        (v1 > 0 ? x < waveFront1 : x > waveFront1) ||
-        (v2 > 0 ? x < waveFront2 : x > waveFront2)
+        atWaveFront1 ||
+        atWaveFront2
       )
     ) out = [
       this.constants.color,

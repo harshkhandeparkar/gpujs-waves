@@ -22,8 +22,8 @@ document.getElementById('pt-size').value = pointSize;
 document.getElementById('coord-scale-factor').value = coordScaleFactor;
 
 // [Amplitude, Ang Freq, Ang Wave No]
-let HTMLWave1Params = ['0.5', 'pi', '-pi']; // String values for pi which will finally be evaluated
-let HTMLWave2Params = ['1', 'pi', 'pi/2'];
+let HTMLWave1Params = ['0.5', 'pi', '-pi/2']; // String values for pi which will finally be evaluated
+let HTMLWave2Params = ['0.5', 'pi', 'pi/2'];
 
 let wave1Params = [
   Number(eval(HTMLWave1Params[0].replace('pi', pi))),

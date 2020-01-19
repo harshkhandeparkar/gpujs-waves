@@ -14,7 +14,7 @@ let dim = 800, // dimensions
   rendersPerFrame = 1,
   pi = Math.PI,
   pointSize = 0.03, // Size of the point/brush
-  coordScaleFactor = 100;// Coordinates are multiplied by this(makes the graphs bigger or smaller)
+  coordScaleFactor = 100; // Coordinates are multiplied by this(makes the graphs bigger or smaller)
 
 document.getElementById('speed').value = speed;
 document.getElementById('rend-per-frame').value = rendersPerFrame;

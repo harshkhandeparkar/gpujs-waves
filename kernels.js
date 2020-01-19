@@ -4,8 +4,11 @@ const render = gpu.createKernel(
     let out = pixels[this.thread.y][this.thread.x];
     const x = (this.thread.x - this.constants.centerX) / coordScaleFactor;
 
-    const v1 = wave1Params[1] / wave1Params[2]; // Propagation velocity
-    const v2 = wave2Params[1] / wave2Params[2];
+    const [A1, w1, k1, phaseDiff1] = wave1Params; // k = angular wave no; w = angular freq
+    const [A2, w2, k2, phaseDiff2] = wave2Params;
+
+    const v1 = w1 / k1; // Propagation velocity
+    const v2 = w2 / k2;
     
     const waveFront1 = v1 < 0 ?
       (this.constants.centerX - Math.abs(v1 * t * coordScaleFactor)) / coordScaleFactor : 
@@ -18,18 +21,20 @@ const render = gpu.createKernel(
     const atWaveFront1 = (v1 > 0 ? x < waveFront1 : x > waveFront1);
     const atWaveFront2 = (v2 > 0 ? x < waveFront2 : x > waveFront2);
 
-    const y1 = atWaveFront1 ? wave1Params[0]*Math.sin(wave1Params[1]*t - wave1Params[2]*x) : 0;
-    const y2 = atWaveFront2 ? wave2Params[0]*Math.sin(wave2Params[1]*t - wave2Params[2]*x) : 0;
+    const y1 = atWaveFront1 ? A1*Math.sin(w1*t - k1*x + phaseDiff1) : 0;
+    const y2 = atWaveFront2 ? A2*Math.sin(w2*t - k2*x + phaseDiff2) : 0;
+
     const finalY = y1 + y2;
+
     const vp = Math.abs(
       (
         atWaveFront1 ?
-        Math.cos(wave1Params[1]*t - wave1Params[2]*x) :
+        Math.cos(w1*t - k1*x + phaseDiff1) :
         0
       ) +
       (
         atWaveFront2 ?
-        Math.cos(wave2Params[1]*t - wave2Params[2]*x) :
+        Math.cos(w2*t - k2*x + phaseDiff2) :
         0
       )
     ) / 2 // particle velocity

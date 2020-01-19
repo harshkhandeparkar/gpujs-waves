@@ -61,23 +61,27 @@ document.getElementById('change').onclick = e => {
   HTMLWave1Params = [
     document.getElementById('amp-1').value,
     document.getElementById('freq-1').value,
-    document.getElementById('wave-no-1').value
+    document.getElementById('wave-no-1').value,
+    document.getElementById('phase-diff-1').value
   ]
   HTMLWave2Params = [
     document.getElementById('amp-2').value,
     document.getElementById('freq-2').value,
-    document.getElementById('wave-no-2').value
+    document.getElementById('wave-no-2').value,
+    document.getElementById('phase-diff-2').value
   ]
 
   wave1Params = [
     Number(eval(HTMLWave1Params[0].replace('pi', pi))),
     Number(eval(HTMLWave1Params[1].replace('pi', pi))), // Evaluate mathematical expressions
-    Number(eval(HTMLWave1Params[2].replace('pi', pi)))
+    Number(eval(HTMLWave1Params[2].replace('pi', pi))),
+    Number(eval(HTMLWave1Params[3].replace('pi', pi)))
   ]
   wave2Params = [
     Number(eval(HTMLWave2Params[0].replace('pi', pi))),
     Number(eval(HTMLWave2Params[1].replace('pi', pi))),
-    Number(eval(HTMLWave2Params[2].replace('pi', pi)))
+    Number(eval(HTMLWave2Params[2].replace('pi', pi))),
+    Number(eval(HTMLWave2Params[3].replace('pi', pi)))
   ]
 }
 
@@ -94,9 +98,12 @@ document.getElementById('blank').onclick = e => {
 document.getElementById('amp-1').value = HTMLWave1Params[0];
 document.getElementById('freq-1').value = HTMLWave1Params[1];
 document.getElementById('wave-no-1').value = HTMLWave1Params[2];
+document.getElementById('phase-diff-1').value = HTMLWave1Params[3];
+
 document.getElementById('amp-2').value = HTMLWave2Params[0];
 document.getElementById('freq-2').value = HTMLWave2Params[1];
 document.getElementById('wave-no-2').value = HTMLWave2Params[2];
+document.getElementById('phase-diff-2').value = HTMLWave2Params[3];
 
 display(renderPixelsTex);
 window.requestAnimationFrame(doDraw);
